@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cormorant Garamond", Georgia, Cambria, "Times New Roman", serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  :root {
+    --cornels-charcoal: #141517;
+    --cornels-charcoal-soft: #1c1e22;
+    --cornels-ivory: #f7f4ee;
+    --cornels-stone: #ebe6dd;
+    --cornels-burgundy: #8b1e24;
+    --cornels-burgundy-hover: #73171c;
+    --cornels-champagne: #c5a46d;
+    --cornels-ink: #17181b;
+    --cornels-muted: #5a5d64;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--cornels-ivory);
+    color: var(--cornels-ink);
+    overflow-x: clip;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Cinematic intro metallic sweep */
+@keyframes cornels-shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.72;
+  }
+  100% {
+    transform: translateX(190%) skewX(-18deg);
+    opacity: 0;
+  }
+}
+
+/* Subtle slow architectural drift for full-bleed hero backdrop */
+@keyframes cornels-ken-burns {
+  0% {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.065) translate3d(-0.7%, -0.5%, 0);
+  }
+  100% {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+}
+
+/* Vertical hairline scroll pulse */
+@keyframes cornels-scroll-hairline {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-cornels-shimmer {
+  animation: cornels-shimmer 2.1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-cornels-hero-motion {
+  animation: cornels-ken-burns 28s ease-in-out infinite;
+}
+
+.animate-cornels-scroll-line {
+  animation: cornels-scroll-hairline 2.2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Hairline animated underline utility */
+.editorial-underline {
+  position: relative;
+}
+
+.editorial-underline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-underline:hover::after,
+.editorial-underline:focus-visible::after,
+.editorial-underline[data-active="true"]::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* Subtle magnetic transition curve */
+.magnetic-cta {
+  transition:
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.25s ease,
+    border-color 0.25s ease,
+    color 0.25s ease;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-cornels-shimmer,
+  .animate-cornels-hero-motion,
+  .animate-cornels-scroll-line {
+    animation: none !important;
+  }
+
+  .magnetic-cta {
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}

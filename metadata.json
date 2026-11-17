@@ -1,0 +1,6 @@
+{
+  "name": "Cornels Hotel & Suites | Cornels Place",
+  "description": "Luxury hospitality in Udu / Warri, Delta State, Nigeria. Explore Deluxe rooms, Cornel's Lounge, event facilities, and reserve directly via WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
